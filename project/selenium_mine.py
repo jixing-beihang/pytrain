@@ -8,23 +8,23 @@ from selenium.webdriver.support.wait import WebDriverWait
 # browser = webdriver.Firefox(executable_path='D:\Software\Firefox\geckodriver\geckodriver.exe')
 # IE
 browser = webdriver.Ie(executable_path='D:\Software\IEDriver_32\IEDriverServer.exe')
-# try:
-#     browser.get('https://www.baidu.com')
-#     input = browser.find_element_by_id('kw')
-#     # 输入文字
-#     input.send_keys('Python')
-#     input.send_keys(Keys.ENTER)
-#     # 显示等待
-#     wait = WebDriverWait(browser,10)
-#     wait.until(expected_conditions.presence_of_all_elements_located((By.ID, 'content_left')))
-#     print(browser.current_url)
-#     print(browser.get_cookies())
-#     print(browser.page_source)
-#
-# except Exception as e:
-#     print(e)
-# finally:
-#     browser.close()
+try:
+    browser.get('https://www.baidu.com')
+    input = browser.find_element_by_id('kw')
+    # 输入文字
+    input.send_keys('Python')
+    input.send_keys(Keys.ENTER)
+    # 显示等待
+    wait = WebDriverWait(browser,10)
+    wait.until(expected_conditions.presence_of_all_elements_located((By.ID, 'content_left')))
+    print(browser.current_url)
+    print(browser.get_cookies())
+    print(browser.page_source)
+
+except Exception as e:
+    print(e)
+finally:
+    browser.close()
 
 # browser.get('https://www.taobao.com')
 # # # 获取单个元素
@@ -78,12 +78,12 @@ browser = webdriver.Ie(executable_path='D:\Software\IEDriver_32\IEDriverServer.e
 #     browser.close()
 
 # Cookies
-browser.get('https://www.zhihu.com/explore')
-print(browser.get_cookies())
-browser.add_cookie({'test':'name','value':'value'})
-print(browser.get_cookies())
-browser.delete_all_cookies()
-print(browser.get_cookies())
+# browser.get('https://www.zhihu.com/explore')
+# print(browser.get_cookies())
+# browser.add_cookie({'test':'name','value':'value'})
+# print(browser.get_cookies())
+# browser.delete_all_cookies()
+# print(browser.get_cookies())
 
 
 # 选项卡管理

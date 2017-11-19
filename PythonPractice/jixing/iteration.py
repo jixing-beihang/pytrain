@@ -77,19 +77,18 @@
 import time
 
 
-# @log
-
-
-
-def now():
-    print(time.strftime('%Y%m%d%H%M%S', time.localtime())) # strftime 格式化函数，年月日时分秒格式
-
-
 def log(func):
     def wrapper(*args, **kwargs):
         print('call %s' % func.__name__)
         return func(*args, **kwargs)
+
     return wrapper
+
+# log 装饰器需要在调用前定义
+@log
+def now():
+    print(time.strftime('%Y%m%d%H%M%S', time.localtime()))  # strftime 格式化函数，年月日时分秒格式
+
 
 # 按格式打印时间
 now()
@@ -97,12 +96,11 @@ now()
 # 偏函数 partial
 import functools
 
-int10 = functools.partial(int,base=10)
-int2 = functools.partial(int, base=2) # 将二进制数转换为十进制
-int8 = functools.partial(int,base=8) # 将八进制数转换为十进制
-int16 = functools.partial(int,base=16) # 将十六进制数转换为十进制
+int10 = functools.partial(int, base=10)
+int2 = functools.partial(int, base=2)  # 将二进制数转换为十进制
+int8 = functools.partial(int, base=8)  # 将八进制数转换为十进制
+int16 = functools.partial(int, base=16)  # 将十六进制数转换为十进制
 print(int10('8'))
 print(int2('10010'))
 print(int8('777'))
 print(int16('fff'))
-

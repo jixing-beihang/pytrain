@@ -176,12 +176,13 @@ soup = BeautifulSoup(html,'lxml')
 # print(soup.select('#anony-nav .anony-srh'))
 
 # 嵌套查找，获取属性[]
-for ul in soup.select('.albums .pic'):
-    print(type(ul))
-    for a in ul.select('a'):
-        print(a['href'])
-        print(a.attrs['href'])
+# for ul in soup.select('.albums .pic'):
+#     print(type(ul))
+#     for a in ul.select('a'):
+#         print(a['href'])
+#         print(a.attrs['href'])
 
 # 获得内容 get_text
-# for li in soup.select('li'):
-#     print(li.get_text)
+for li in soup.select('li'):
+    print(li.text)
+    print(li.get_text)

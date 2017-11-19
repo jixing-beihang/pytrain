@@ -13,8 +13,9 @@ if __name__ == "__main__":
     pool = Pool(3)
     for i in range(4):
         msg = "hello %d" % (i)
-        # pool.apply_async(func, (msg,))  # 非阻塞，维持执行的进程总数为processes，当一个进程执行完毕后会添加新的进程进去
-        pool.apply(func, (msg,))  # 阻塞，维持执行的进程总数为processes，当一个进程执行完毕后会添加新的进程进去
+        # result = pool.apply_async(func, (msg,))  # 非阻塞，维持执行的进程总数为processes，当一个进程执行完毕后会添加新的进程进去,有返回值
+        result = pool.apply(func, (msg,))  # 阻塞，维持执行的进程总数为processes，当一个进程执行完毕后会添加新的进程进去
+        print(result)
 
     print("Mark~ Mark~ Mark~")
     pool.close()
