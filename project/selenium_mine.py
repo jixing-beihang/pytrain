@@ -2,12 +2,13 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 # FireFox
 # browser = webdriver.Firefox(executable_path='D:\Software\Firefox\geckodriver\geckodriver.exe')
 # IE
 browser = webdriver.Ie(executable_path='D:\Software\IEDriver_32\IEDriverServer.exe')
+# browser = webdriver.PhantomJS(executable_path='D:\Software\PlantomJS\phantomjs-2.1.1-windows\\bin\phantomjs.exe')
 try:
     browser.get('https://www.baidu.com')
     input = browser.find_element_by_id('kw')
@@ -16,7 +17,7 @@ try:
     input.send_keys(Keys.ENTER)
     # 显示等待
     wait = WebDriverWait(browser,10)
-    wait.until(expected_conditions.presence_of_all_elements_located((By.ID, 'content_left')))
+    wait.until(EC.presence_of_all_elements_located((By.ID, 'content_left')))
     print(browser.current_url)
     print(browser.get_cookies())
     print(browser.page_source)
@@ -27,16 +28,17 @@ finally:
     browser.close()
 
 # browser.get('https://www.taobao.com')
-# # # 获取单个元素
+# # # # 获取单个元素
 # input = browser.find_element_by_id('q')
 # input_second = browser.find_element(By.ID, 'q')
 # input.send_keys('iphone')
 # time.sleep(1)
 # input.clear()
 # input.send_keys('ipad')
+# # input.send_keys(Keys.ENTER)
 # wait = WebDriverWait(browser, 10)
-# # button = browser.find_element_by_class_name('btn-search')
-# button = wait.until(expected_conditions.element_to_be_clickable((By.CSS_SELECTOR, '.btn-search')))
+# button = browser.find_element_by_css_selector('.btn-search')
+# # button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.search-button .btn-search')))
 # button.click()
 
 # 获取列表
