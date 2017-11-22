@@ -12,7 +12,7 @@ import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import RequestException
 
-from config import *
+from project.config import *
 
 client = pymongo.MongoClient(MONGO_URL, connect=False)
 db = client[MONGO_DB]
@@ -104,7 +104,8 @@ def download_image(url):
 
 
 def save_image(content):
-    file_path = '{0}/{1}.{2}'.format(os.getcwd(), md5(content).hexdigest(), 'jpg')
+    file_path = '{0}/{1}.{2}'.format(os.path.join(os.path.abspath('.'), 'images'), md5(content).hexdigest(), 'jpg')
+    print(file_path)
     if not os.path.exists(file_path):
         with open(file_path, 'wb') as f:
             f.write(content)
@@ -118,7 +119,6 @@ def main(offset):
             result = parse_page_datail(html, url)
             print(result)
             if result: save_to_mongo(result)
-
 
 
 if __name__ == '__main__':
