@@ -184,5 +184,7 @@ soup = BeautifulSoup(html,'lxml')
 
 # 获得内容 get_text
 for li in soup.select('li'):
+    # 获取文字内容
     print(li.text)
+    # 获取整个标签
     print(li.get_text)
