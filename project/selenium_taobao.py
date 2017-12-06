@@ -1,3 +1,4 @@
+# coding: utf-8
 import re
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
@@ -13,7 +14,8 @@ client = pymongo.MongoClient(MONGO_URL)
 db = client[MONGO_DB_TB]
 
 # browser = webdriver.Ie()
-browser = webdriver.PhantomJS(executable_path='D:\Software\PlantomJS\phantomjs-2.1.1-windows\\bin\phantomjs.exe',service_args=SERVICE_ARGS)
+# browser = webdriver.PhantomJS(executable_path='D:\Software\PlantomJS\phantomjs-2.1.1-windows\\bin\phantomjs.exe',service_args=SERVICE_ARGS)
+browser = webdriver.PhantomJS(service_args=SERVICE_ARGS)
 wait = WebDriverWait(browser, 10)
 
 

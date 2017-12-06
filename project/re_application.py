@@ -1,9 +1,10 @@
 import re
-import requests_practice
+
+import requests
 from requests import exceptions
 
 try:
-    response = requests_practice.get('http://www.douban.com')
+    response = requests.get('http://www.douban.com')
     # print(response.text)
 
     partten = re.compile('<li>.*?<a\sclass="cover.+?<a\sclass="title"\shref="(.+?)">(.+?)</a>.+?<span.+?>(.+?)</span>.+?</li>',re.S)

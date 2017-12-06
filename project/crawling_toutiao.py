@@ -67,7 +67,6 @@ def parse_page_datail(html, url):
     images_pattern = re.compile(r'gallery: JSON.parse\("(.+?)"\),', re.S)
     result = re.search(images_pattern, html)
     if result:
-        # print(result.group(1))
         try:
             data = json.loads(result.group(1).replace('\\', ''))
             if data and 'sub_images' in data.keys():
@@ -105,7 +104,6 @@ def download_image(url):
 
 def save_image(content):
     file_path = '{0}/{1}.{2}'.format(os.path.join(os.path.abspath('.'), 'images'), md5(content).hexdigest(), 'jpg')
-    print(file_path)
     if not os.path.exists(file_path):
         with open(file_path, 'wb') as f:
             f.write(content)
@@ -122,7 +120,7 @@ def main(offset):
 
 
 if __name__ == '__main__':
-    pool = Pool(10)
+    pool = Pool(4)
     pool.map(main, [x * 20 for x in range(GROUP_START, GROUP_END + 1)])
     pool.close()
     pool.join()
